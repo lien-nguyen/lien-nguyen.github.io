@@ -1,3 +1,4 @@
+
 body {
   font-family: Arial, sans-serif;
 }
@@ -371,7 +372,6 @@ button:hover {
   cursor: pointer;
 }
 
-
 /*  to make it look good on tablets, and mobile devices*/
 @media only screen and (max-width:800px) {
   /* For tablets: */
@@ -383,9 +383,11 @@ button:hover {
     width: 100%;
   }
 }
+
 @media only screen and (max-width:500px) {
   /* For mobile phones: */
-  .contact_info, .top-div, .top-menu, .profile_image, .container, .education, .projects-container, .project-card, 
-  . {
+  .contact_info, .top-div, .top-menu, .profile_image, .container, .education, .projects-container, .project-card 
+   {
     width: 100%;
   }
+}
