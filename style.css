@@ -386,7 +386,7 @@ button:hover {
 
 @media only screen and (max-width:500px) {
   /* For mobile phones: */
-  body, #home, .contact_info, .top-div, .top-menu, .profile_image, .container, .education, .projects-container, .project-card 
+  body, #home, .contact_info, .top-div, .top-menu, .container, .profile_image, .education, .projects-container 
    {
     width: 100%;
   }
