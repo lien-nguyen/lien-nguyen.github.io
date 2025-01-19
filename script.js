@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   loadProjects();
   loadSkills();
   loadAboutMe();
+  addTrainingAndCertsSection();
 
   // Show or hide the scroll-to-top button based on scroll position
   window.addEventListener("scroll", function() {
@@ -21,6 +22,22 @@ document.addEventListener("DOMContentLoaded", function() {
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+
+function addTrainingAndCertsSection() {
+  fetch('./training-and-certs.html') // Ensure the correct relative path
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById('training-and-certs-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading training-and-certs.html:', error));
+}
+
 
 function loadAboutMe() {
   fetch('about-me.html')
