@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   loadExperiences();
   loadProjects();
   loadSkills();
-  loadAboutMe()
+  loadAboutMe();
 
   // Show or hide the scroll-to-top button based on scroll position
   window.addEventListener("scroll", function() {
