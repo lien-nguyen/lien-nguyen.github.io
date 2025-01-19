@@ -1,25 +1,118 @@
+document.addEventListener("DOMContentLoaded", function() {
+  loadRecommendations();
+
+  // Show or hide the scroll-to-top button based on scroll position
+  window.addEventListener("scroll", function() {
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    if (window.scrollY > 200) {
+      scrollToTopBtn.style.display = "block";
+    } else {
+      scrollToTopBtn.style.display = "none";
+    }
+  });
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function addRecommendation() {
-  let recommendation = document.getElementById("new_recommendation");
-  if (recommendation.value != null && recommendation.value.trim() != "") {
+  // Get the name and message of the new recommendation
+  const name = document.getElementById("name").value.trim();
+  const recommendation = document.getElementById("new_recommendation").value.trim();
+  
+  // If the user has left a recommendation, display a pop-up
+  if (recommendation) {
     console.log("New recommendation added");
-    showPopup(true)
+    showPopup(true);
 
-    var element = document.createElement("div");
-    element.setAttribute("class","recommendation");
-    element.innerHTML = "\<span\>&#8220;\</span\>" + recommendation.value + "\<span\>&#8221;\</span\>";
+    // Create a new 'recommendation' element and set its value to the user's message
+    const element = document.createElement("div");
+    element.setAttribute("class", "recommendation");
+    element.innerHTML = "<span>&#8220;</span>" + recommendation + "<span>&#8221;</span>";
+    
+    // If the user provided a name, include it
+    if (name) {
+      const nameElement = document.createElement("p");
+      nameElement.textContent = "- " + name;
+      element.appendChild(nameElement);
+    }
 
+    // Add a delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.onclick = function() {
+      deleteRecommendation(element, name, recommendation);
+    };
+    element.appendChild(deleteButton);
+
+    // Add this element to the end of the list of recommendations
     document.getElementById("all_recommendations").appendChild(element); 
     
-    recommendation.value = "";
+    // Save the recommendation to localStorage
+    saveRecommendation(name, recommendation);
 
-    
+    // Reset the values of the input fields
+    document.getElementById("name").value = "";
+    document.getElementById("new_recommendation").value = "";
   }
 }
 
 function showPopup(bool) {
-  if (bool) {
-    document.getElementById('popup').style.visibility = 'visible'
-  } else {
-    document.getElementById('popup').style.visibility = 'hidden'
+  const popup = document.getElementById('popup');
+  popup.style.display = bool ? 'block' : 'none';
+}
+
+function saveRecommendation(name, recommendation) {
+  try {
+    const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
+    recommendations.push({ name: name, recommendation: recommendation });
+    localStorage.setItem("recommendations", JSON.stringify(recommendations));
+  } catch (error) {
+    console.error("Error saving recommendation to localStorage", error);
+  }
+}
+
+function loadRecommendations() {
+  try {
+    const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
+    recommendations.forEach(function(rec) {
+      const element = document.createElement("div");
+      element.setAttribute("class", "recommendation");
+      element.innerHTML = "<span>&#8220;</span>" + rec.recommendation + "<span>&#8221;</span>";
+      
+      if (rec.name) {
+        const nameElement = document.createElement("p");
+        nameElement.textContent = "- " + rec.name;
+        element.appendChild(nameElement);
+      }
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.onclick = function() {
+        deleteRecommendation(element, rec.name, rec.recommendation);
+      };
+      element.appendChild(deleteButton);
+
+      document.getElementById("all_recommendations").appendChild(element);
+    });
+  } catch (error) {
+    console.error("Error loading recommendations from localStorage", error);
+  }
+}
+
+function deleteRecommendation(element, name, recommendation) {
+  // Remove the element from the DOM
+  element.remove();
+
+  // Remove the recommendation from localStorage
+  try {
+    let recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
+    recommendations = recommendations.filter(function(rec) {
+      return rec.name !== name || rec.recommendation !== recommendation;
+    });
+    localStorage.setItem("recommendations", JSON.stringify(recommendations));
+  } catch (error) {
+    console.error("Error deleting recommendation from localStorage", error);
   }
 }
