@@ -113,20 +113,23 @@ h3 {
 /* Skills Section */
 #skill {
   padding: 50px 0;
+  background-color: #f9f9f9;
 }
 
 .all_skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+  padding: 0 10%;
 }
 
 .skill {
-  border: 1px solid gray;
+  background-color: white;
+  border: 1px solid #ddd;
   border-radius: 10px;
   text-align: center;
   padding: 20px;
-  font-size: 20px;
+  font-size: 16px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -137,19 +140,20 @@ h3 {
 }
 
 .skill img {
-  height: 50px;
-  margin-bottom: 10px;
+  height: 60px;
+  margin-bottom: 15px;
 }
 
 .skill h6 {
-  font-size: 24px;
+  font-size: 20px;
   margin: 10px 0;
   font-weight: bold;
+  color: #2F539B;
 }
 
 .skill p {
-  font-size: 16px;
-  color: gray;
+  font-size: 14px;
+  color: #666;
 }
 
 /* Experiences Section */
@@ -377,4 +381,36 @@ footer {
 
 #scrollToTopBtn:hover {
   background-color: #FFD700;
+}
+
+/* Media Queries */
+
+/* Example of a media query for mobile devices */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  .top-menu {
+    font-size: 12px;
+  }
+}
+
+/* Example of a media query for tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+  .top-menu {
+    font-size: 14px;
+  }
+}
+
+/* Example of a media query for desktops */
+@media (min-width: 1025px) {
+  body {
+    font-size: 18px;
+  }
+  .top-menu {
+    font-size: 16px;
+  }
 }
