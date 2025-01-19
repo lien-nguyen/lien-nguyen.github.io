@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
   loadRecommendations();
+  loadAboutMe();
+  loadEducation();
+  loadExperiences();
+  loadProjects();
+  loadSkills();
 
   // Show or hide the scroll-to-top button based on scroll position
   window.addEventListener("scroll", function() {
@@ -14,6 +19,51 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function loadAboutMe() {
+  fetch('about-me.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('about-me-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading about me section:', error));
+}
+
+function loadEducation() {
+  fetch('education.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('education-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading education section:', error));
+}
+
+function loadExperiences() {
+  fetch('experiences.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('experiences-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading experiences section:', error));
+}
+
+function loadProjects() {
+  fetch('projects.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('projects-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading projects section:', error));
+}
+
+function loadSkills() {
+  fetch('skills.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('skills-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading skills section:', error));
 }
 
 function addRecommendation() {
