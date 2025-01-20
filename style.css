@@ -520,7 +520,7 @@ footer {
   }
   .hamburger {
     display: flex;
-    margin-right: auto; /* Move to the right */
+    margin-right: 50px; /* Move to the right */
   }
   nav.active .top-menu {
     display: block;
