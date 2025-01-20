@@ -559,3 +559,17 @@ footer {
     width: 100%;
   }
 }
+
+
+/* Media query for desktop devices */
+@media (min-width: 601px) {
+  .hamburger {
+    display: none; /* Hide hamburger menu on larger screens */
+  }
+  .top-menu {
+    display: flex; /* Ensure top menu is displayed on larger screens */
+  }
+  .contact_info {
+    margin-right: 0; /* Reset margin for larger screens */
+  }
+}
