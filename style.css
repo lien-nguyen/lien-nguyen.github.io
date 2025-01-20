@@ -66,6 +66,7 @@ nav {
   display: flex;
   align-items: center;
   flex-wrap: wrap; /* Allow wrapping */
+  margin-left: auto; /* Move to the right */
 }
 
 /* Hamburger Menu */
@@ -520,6 +521,7 @@ footer {
   }
   .hamburger {
     display: flex;
+    margin-left: auto; /* Move to the right */
   }
   nav.active .top-menu {
     display: block;
@@ -531,13 +533,15 @@ footer {
     flex-direction: column;
   }
   #home {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 5%;
   }
   .contact_info {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
   }
   #about-me {
     flex-direction: column;
