@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   loadRecommendations();
+  loadPendingRecommendations();
   loadAboutMe();
   loadEducation();
   loadExperiences();
@@ -91,31 +92,8 @@ function addRecommendation() {
     console.log("New recommendation added");
     showPopup(true);
 
-    // Create a new 'recommendation' element and set its value to the user's message
-    const element = document.createElement("div");
-    element.setAttribute("class", "recommendation");
-    element.innerHTML = "<span>&#8220;</span>" + recommendation + "<span>&#8221;</span>";
-    
-    // If the user provided a name, include it
-    if (name) {
-      const nameElement = document.createElement("p");
-      nameElement.textContent = "- " + name;
-      element.appendChild(nameElement);
-    }
-
-    // Add a delete button
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.onclick = function() {
-      deleteRecommendation(element, name, recommendation);
-    };
-    element.appendChild(deleteButton);
-
-    // Add this element to the end of the list of recommendations
-    document.getElementById("all_recommendations").appendChild(element); 
-    
-    // Save the recommendation to localStorage
-    saveRecommendation(name, recommendation);
+    // Save the recommendation to localStorage as pending
+    savePendingRecommendation(name, recommendation);
 
     // Reset the values of the input fields
     document.getElementById("name").value = "";
@@ -128,13 +106,77 @@ function showPopup(bool) {
   popup.style.display = bool ? 'block' : 'none';
 }
 
-function saveRecommendation(name, recommendation) {
+function savePendingRecommendation(name, recommendation) {
   try {
-    const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
-    recommendations.push({ name: name, recommendation: recommendation });
-    localStorage.setItem("recommendations", JSON.stringify(recommendations));
+    const pendingRecommendations = JSON.parse(localStorage.getItem("pendingRecommendations")) || [];
+    pendingRecommendations.push({ name: name, recommendation: recommendation });
+    localStorage.setItem("pendingRecommendations", JSON.stringify(pendingRecommendations));
   } catch (error) {
-    console.error("Error saving recommendation to localStorage", error);
+    console.error("Error saving pending recommendation to localStorage", error);
+  }
+}
+
+function loadPendingRecommendations() {
+  try {
+    const pendingRecommendations = JSON.parse(localStorage.getItem("pendingRecommendations")) || [];
+    const pendingContainer = document.getElementById("pending_recommendations");
+    pendingRecommendations.forEach(function(rec, index) {
+      const element = document.createElement("div");
+      element.setAttribute("class", "recommendation");
+      element.innerHTML = "<span>&#8220;</span>" + rec.recommendation + "<span>&#8221;</span>";
+      
+      if (rec.name) {
+        const nameElement = document.createElement("p");
+        nameElement.textContent = "- " + rec.name;
+        element.appendChild(nameElement);
+      }
+
+      const approveButton = document.createElement("button");
+      approveButton.textContent = "Approve";
+      approveButton.onclick = function() {
+        approveRecommendation(index);
+      };
+      element.appendChild(approveButton);
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.onclick = function() {
+        deletePendingRecommendation(index);
+      };
+      element.appendChild(deleteButton);
+
+      pendingContainer.appendChild(element);
+    });
+  } catch (error) {
+    console.error("Error loading pending recommendations from localStorage", error);
+  }
+}
+
+function approveRecommendation(index) {
+  try {
+    const pendingRecommendations = JSON.parse(localStorage.getItem("pendingRecommendations")) || [];
+    const approvedRecommendation = pendingRecommendations.splice(index, 1)[0];
+    localStorage.setItem("pendingRecommendations", JSON.stringify(pendingRecommendations));
+
+    const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
+    recommendations.push(approvedRecommendation);
+    localStorage.setItem("recommendations", JSON.stringify(recommendations));
+
+    location.reload(); // Reload the page to update the recommendations
+  } catch (error) {
+    console.error("Error approving recommendation", error);
+  }
+}
+
+function deletePendingRecommendation(index) {
+  try {
+    const pendingRecommendations = JSON.parse(localStorage.getItem("pendingRecommendations")) || [];
+    pendingRecommendations.splice(index, 1);
+    localStorage.setItem("pendingRecommendations", JSON.stringify(pendingRecommendations));
+
+    location.reload(); // Reload the page to update the pending recommendations
+  } catch (error) {
+    console.error("Error deleting pending recommendation", error);
   }
 }
 
