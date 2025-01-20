@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
   loadAboutMe();
   loadEducation();
   loadExperiences();
-  loadProjects();
+  // loadProjects();
   loadSkills();
   addTrainingAndCertsSection();
 
