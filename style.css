@@ -446,22 +446,59 @@ footer {
   margin: 10px 0 0;
 }
 
-/* Example of a media query for tablets */
-@media (min-width: 601px) and (max-width: 1024px) {
-  body {
-    font-size: 16px;
+/* Mobile styles */
+@media (max-width: 600px) {
+  header, main, footer {
+      padding: 10px;
   }
-  .top-menu {
-    font-size: 14px;
+
+  h1 {
+      font-size: 1.5em;
+  }
+
+  h2 {
+      font-size: 1.2em;
+  }
+
+  p {
+      font-size: 1em;
   }
 }
 
-/* Example of a media query for desktops */
-@media (min-width: 1025px) {
-  body {
-    font-size: 18px;
+/* Tablet styles */
+@media (min-width: 601px) and (max-width: 1024px) {
+  header, main, footer {
+      padding: 15px;
   }
-  .top-menu {
-    font-size: 16px;
+
+  h1 {
+      font-size: 2em;
+  }
+
+  h2 {
+      font-size: 1.5em;
+  }
+
+  p {
+      font-size: 1.2em;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+  header, main, footer {
+      padding: 20px;
+  }
+
+  h1 {
+      font-size: 2.5em;
+  }
+
+  h2 {
+      font-size: 2em;
+  }
+
+  p {
+      font-size: 1.5em;
   }
 }
