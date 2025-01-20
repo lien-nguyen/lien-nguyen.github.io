@@ -541,6 +541,7 @@ footer {
   .contact_info {
     flex-direction: row;
     align-items: center;
+    margin-right: 20px; /* Add space between contact info and hamburger menu */
   }
   #about-me {
     flex-direction: column;
