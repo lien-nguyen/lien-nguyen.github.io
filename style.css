@@ -21,12 +21,14 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 #home {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 0 10%;
 }
 
@@ -63,6 +65,32 @@ nav {
 .top-div {
   display: flex;
   align-items: center;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+nav.active .top-menu {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+nav.active .top-div {
+  flex-direction: column;
 }
 
 /* About Me Section */
@@ -402,50 +430,6 @@ footer {
   background-color: #FFD700;
 }
 
-/* Media Queries */
-
-/* Example of a media query for mobile devices */
-@media (max-width: 600px) {
-  body {
-    font-size: 14px;
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-  .top-menu {
-    font-size: 12px;
-    padding: 5px 10px;
-  }
-  #home {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0;
-  }
-  .contact_info {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  #about-me {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-  }
-  .profile_image {
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-  .all_skills {
-    padding: 0 5%;
-  }
-  .recommendation {
-    width: 100%;
-  }
-}
-
 /* Styles for Training and Certifications Section */
 #training-and-certs {
   padding: 20px;
@@ -478,6 +462,7 @@ footer {
   margin: 10px 0 0;
 }
 
+/* Media Queries */
 /* Tablet styles */
 @media (min-width: 601px) and (max-width: 1024px) {
   header, main, footer {
@@ -513,5 +498,58 @@ footer {
 
   p {
       font-size: 1.5em;
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  .top-menu {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  nav.active .top-menu {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+  nav.active .top-div {
+    flex-direction: column;
+  }
+  #home {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+  }
+  .contact_info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #about-me {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .profile_image {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .all_skills {
+    padding: 0 5%;
+  }
+  .recommendation {
+    width: 100%;
   }
 }
