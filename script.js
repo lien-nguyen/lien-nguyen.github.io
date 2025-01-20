@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   loadRecommendations();
-  loadPendingRecommendations();
+  // loadPendingRecommendations(); // Commented out
   loadAboutMe();
   loadEducation();
   loadExperiences();
@@ -17,6 +17,12 @@ document.addEventListener("DOMContentLoaded", function() {
       scrollToTopBtn.style.display = "none";
     }
   });
+
+  // Check for admin query parameter to show admin login prompt
+  // const urlParams = new URLSearchParams(window.location.search);
+  // if (urlParams.get('admin') === 'true') {
+  //   document.getElementById('admin-login').style.display = 'block';
+  // }
 });
 
 function scrollToTop() {
@@ -92,8 +98,8 @@ function addRecommendation() {
     console.log("New recommendation added");
     showPopup(true);
 
-    // Save the recommendation to localStorage as pending
-    savePendingRecommendation(name, recommendation);
+    // Save the recommendation to localStorage
+    saveRecommendation(name, recommendation);
 
     // Reset the values of the input fields
     document.getElementById("name").value = "";
@@ -106,16 +112,60 @@ function showPopup(bool) {
   popup.style.display = bool ? 'block' : 'none';
 }
 
-function savePendingRecommendation(name, recommendation) {
+function saveRecommendation(name, recommendation) {
   try {
-    const pendingRecommendations = JSON.parse(localStorage.getItem("pendingRecommendations")) || [];
-    pendingRecommendations.push({ name: name, recommendation: recommendation });
-    localStorage.setItem("pendingRecommendations", JSON.stringify(pendingRecommendations));
+    const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
+    recommendations.push({ name: name, recommendation: recommendation });
+    localStorage.setItem("recommendations", JSON.stringify(recommendations));
+    loadRecommendations(); // Reload recommendations to display the new one
   } catch (error) {
-    console.error("Error saving pending recommendation to localStorage", error);
+    console.error("Error saving recommendation to localStorage", error);
   }
 }
 
+function loadRecommendations() {
+  try {
+    const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
+    const recommendationsContainer = document.getElementById("all_recommendations");
+    recommendationsContainer.innerHTML = ''; // Clear existing recommendations
+    recommendations.forEach(function(rec, index) {
+      const element = document.createElement("div");
+      element.setAttribute("class", "recommendation");
+      element.innerHTML = "<span>&#8220;</span>" + rec.recommendation + "<span>&#8221;</span>";
+      
+      if (rec.name) {
+        const nameElement = document.createElement("p");
+        nameElement.textContent = "- " + rec.name;
+        element.appendChild(nameElement);
+      }
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.onclick = function() {
+        deleteRecommendation(index);
+      };
+      element.appendChild(deleteButton);
+
+      recommendationsContainer.appendChild(element);
+    });
+  } catch (error) {
+    console.error("Error loading recommendations from localStorage", error);
+  }
+}
+
+function deleteRecommendation(index) {
+  try {
+    let recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
+    recommendations.splice(index, 1);
+    localStorage.setItem("recommendations", JSON.stringify(recommendations));
+    loadRecommendations(); // Reload recommendations to update the list
+  } catch (error) {
+    console.error("Error deleting recommendation from localStorage", error);
+  }
+}
+
+// Commented out pending recommendations functions
+/*
 function loadPendingRecommendations() {
   try {
     const pendingRecommendations = JSON.parse(localStorage.getItem("pendingRecommendations")) || [];
@@ -179,47 +229,4 @@ function deletePendingRecommendation(index) {
     console.error("Error deleting pending recommendation", error);
   }
 }
-
-function loadRecommendations() {
-  try {
-    const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
-    recommendations.forEach(function(rec) {
-      const element = document.createElement("div");
-      element.setAttribute("class", "recommendation");
-      element.innerHTML = "<span>&#8220;</span>" + rec.recommendation + "<span>&#8221;</span>";
-      
-      if (rec.name) {
-        const nameElement = document.createElement("p");
-        nameElement.textContent = "- " + rec.name;
-        element.appendChild(nameElement);
-      }
-
-      const deleteButton = document.createElement("button");
-      deleteButton.textContent = "Delete";
-      deleteButton.onclick = function() {
-        deleteRecommendation(element, rec.name, rec.recommendation);
-      };
-      element.appendChild(deleteButton);
-
-      document.getElementById("all_recommendations").appendChild(element);
-    });
-  } catch (error) {
-    console.error("Error loading recommendations from localStorage", error);
-  }
-}
-
-function deleteRecommendation(element, name, recommendation) {
-  // Remove the element from the DOM
-  element.remove();
-
-  // Remove the recommendation from localStorage
-  try {
-    let recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
-    recommendations = recommendations.filter(function(rec) {
-      return rec.name !== name || rec.recommendation !== recommendation;
-    });
-    localStorage.setItem("recommendations", JSON.stringify(recommendations));
-  } catch (error) {
-    console.error("Error deleting recommendation from localStorage", error);
-  }
-}
+*/
