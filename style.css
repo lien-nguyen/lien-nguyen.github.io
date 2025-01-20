@@ -70,11 +70,13 @@ nav {
   display: flex;
   align-items: center;
   padding: 50px 0;
+  flex-wrap: wrap;
 }
 
 .profile_image {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
   border-radius: 50%;
   margin-right: 50px;
   transition: transform 0.3s;
@@ -409,12 +411,28 @@ footer {
     padding-left: 5%;
     padding-right: 5%;
   }
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
   .top-menu {
     font-size: 12px;
+    padding: 5px 10px;
+  }
+  #home {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+  }
+  .contact_info {
+    flex-direction: column;
+    align-items: flex-start;
   }
   #about-me {
     flex-direction: column;
     align-items: center;
+    padding: 20px 0;
   }
   .profile_image {
     margin-right: 0;
