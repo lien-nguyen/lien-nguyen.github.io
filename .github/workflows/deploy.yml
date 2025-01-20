@@ -31,6 +31,7 @@ jobs:
           cp -r src deployment/
           cp style.css deployment/
           cp -r img deployment/
+          rm -f deployment/README.md
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
