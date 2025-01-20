@@ -265,12 +265,10 @@ button:hover {
   transition: background-color 0.3s;
 }
 
-
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
-
 
 .iconbutton:hover {
   background-color: #FFD700;
@@ -408,9 +406,25 @@ footer {
 @media (max-width: 600px) {
   body {
     font-size: 14px;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   .top-menu {
     font-size: 12px;
+  }
+  #about-me {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile_image {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .all_skills {
+    padding: 0 5%;
+  }
+  .recommendation {
+    width: 100%;
   }
 }
 
@@ -444,25 +458,6 @@ footer {
 
 .training-item p {
   margin: 10px 0 0;
-}
-
-/* Mobile styles */
-@media (max-width: 600px) {
-  header, main, footer {
-      padding: 10px;
-  }
-
-  h1 {
-      font-size: 1.5em;
-  }
-
-  h2 {
-      font-size: 1.2em;
-  }
-
-  p {
-      font-size: 1em;
-  }
 }
 
 /* Tablet styles */
