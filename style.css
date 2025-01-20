@@ -73,6 +73,7 @@ nav {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  margin-left: auto; /* Move to the right */
 }
 
 .hamburger div {
