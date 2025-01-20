@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
   loadExperiences();
   loadProjects();
   loadSkills();
-  loadAboutMe();
   addTrainingAndCertsSection();
 
   // Show or hide the scroll-to-top button based on scroll position
@@ -23,9 +22,8 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-
 function addTrainingAndCertsSection() {
-  fetch('./training-and-certs.html') // Ensure the correct relative path
+  fetch('/static/training-and-certs.html') // Ensure the correct relative path
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
@@ -38,9 +36,8 @@ function addTrainingAndCertsSection() {
     .catch(error => console.error('Error loading training-and-certs.html:', error));
 }
 
-
 function loadAboutMe() {
-  fetch('about-me.html')
+  fetch('/static/about-me.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('about-me-placeholder').innerHTML = data;
@@ -49,7 +46,7 @@ function loadAboutMe() {
 }
 
 function loadEducation() {
-  fetch('education.html')
+  fetch('/static/education.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('education-placeholder').innerHTML = data;
@@ -58,7 +55,7 @@ function loadEducation() {
 }
 
 function loadExperiences() {
-  fetch('experiences.html')
+  fetch('/static/experiences.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('experiences-placeholder').innerHTML = data;
@@ -67,7 +64,7 @@ function loadExperiences() {
 }
 
 function loadProjects() {
-  fetch('projects.html')
+  fetch('/static/projects.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('projects-placeholder').innerHTML = data;
@@ -76,7 +73,7 @@ function loadProjects() {
 }
 
 function loadSkills() {
-  fetch('skills.html')
+  fetch('/static/skills.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('skills-placeholder').innerHTML = data;

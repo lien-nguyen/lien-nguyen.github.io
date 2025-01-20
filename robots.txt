@@ -1,0 +1,5 @@
+<!-- filepath: /home/lien/dev/github-projects/lien-nguyen.github.io/robots.txt -->
+User-agent: *
+Disallow: /private/
+Allow: /
+Sitemap: http://lien-nguyen.github.io/sitemap.txt
