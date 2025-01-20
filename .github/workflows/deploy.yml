@@ -30,6 +30,7 @@ jobs:
           cp -r static/* deployment/
           cp -r src deployment/
           cp style.css deployment/
+          cp robots.txt deployment/
           cp -r img deployment/
           rm -f deployment/README.md
 
