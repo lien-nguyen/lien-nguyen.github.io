@@ -14,7 +14,7 @@ body {
 nav {
   background-color: #2F539B; /* Dark Blue */
   color: white;
-  padding: 20px 0; /* Increased padding */
+  padding: 10px 0; /* Reduced padding */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -29,7 +29,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 10%;
+  padding: 0 5%; /* Reduced padding */
 }
 
 .contact_info {
@@ -49,9 +49,9 @@ nav {
 
 .top-menu {
   color: #FFD700; /* Gold color */
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 18px;
+  margin: 0 5px; /* Reduced margin */
+  padding: 5px 10px; /* Reduced padding */
+  font-size: 16px; /* Reduced font size */
   text-decoration: none;
   transition: color 0.3s, background-color 0.3s;
 }
@@ -65,6 +65,7 @@ nav {
 .top-div {
   display: flex;
   align-items: center;
+  flex-wrap: wrap; /* Allow wrapping */
 }
 
 /* Hamburger Menu */
