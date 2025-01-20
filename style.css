@@ -66,7 +66,6 @@ nav {
   display: flex;
   align-items: center;
   flex-wrap: wrap; /* Allow wrapping */
-  margin-left: auto; /* Move to the right */
 }
 
 /* Hamburger Menu */
@@ -74,7 +73,6 @@ nav {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  margin-left: auto; /* Move to the right */
 }
 
 .hamburger div {
@@ -512,8 +510,9 @@ footer {
     padding-right: 5%;
   }
   nav {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
   }
   .top-menu {
@@ -521,7 +520,7 @@ footer {
   }
   .hamburger {
     display: flex;
-    margin-left: auto; /* Move to the right */
+    margin-right: auto; /* Move to the right */
   }
   nav.active .top-menu {
     display: block;
