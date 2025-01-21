@@ -564,6 +564,14 @@ footer {
     align-items: center;
     padding: 20px 0;
   }
+  #about-me .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #about-me div {
+    width: 100%;
+    text-align: center;
+  }
   .profile_image {
     margin-right: 0;
     margin-bottom: 20px;
