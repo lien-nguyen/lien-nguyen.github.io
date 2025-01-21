@@ -2,4 +2,4 @@
 User-agent: *
 Disallow: /private/
 Allow: /
-Sitemap: http://lien-nguyen.github.io/sitemap.txt
+Sitemap: https://lien-nguyen.github.io/sitemap.xml
