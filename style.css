@@ -115,15 +115,21 @@ nav.active .top-div {
   transform: scale(1.05);
 }
 
-#about-me h1 {
-  font-size: 40px; /* Reduced size */
-  color: #2F539B;
+
+#about-me .container {
+  display: flex;
+  align-items: center;
 }
 
-#about-me p {
-  font-size: 20px;
-  color: #666;
+#about-me .profile_image {
+  max-width: 350px; /* Adjust the size as needed */
+  margin-right: 10px; /* Space between image and text */
 }
+
+#about-me div {
+  flex: 1;
+}
+
 
 /* Headings */
 h2 {
