@@ -32,6 +32,7 @@ jobs:
           cp style.css deployment/
           cp index.html deployment/
           cp robots.txt deployment/
+          cp sitemap.xml deployment/
           cp -r img deployment/
           rm -f deployment/README.md
 
