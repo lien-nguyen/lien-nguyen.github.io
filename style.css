@@ -262,6 +262,16 @@ button:hover {
   margin-bottom: 10px;
 }
 
+
+/* Certifications Section */
+.certification-list {
+  padding: 0;
+}
+.certification-item {
+  margin-bottom: 5px;
+}
+
+
 /* Recommendations Section */
 .all_recommendations {
   display: flex;
