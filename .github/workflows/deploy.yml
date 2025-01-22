@@ -29,6 +29,7 @@ jobs:
           mkdir -p deployment
           cp -r static/* deployment/
           cp -r src deployment/
+          cp -r certs/* deployment/
           cp style.css deployment/
           cp index.html deployment/
           cp robots.txt deployment/
