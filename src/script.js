@@ -128,6 +128,11 @@ function loadRecommendations() {
     const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
     const recommendationsContainer = document.getElementById("all_recommendations");
     recommendationsContainer.innerHTML = ''; // Clear existing recommendations
+
+    // Check if the user is an admin
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdmin = urlParams.get('admin') === 'true';
+
     recommendations.forEach(function(rec, index) {
       const element = document.createElement("div");
       element.setAttribute("class", "recommendation");
@@ -139,12 +144,21 @@ function loadRecommendations() {
         element.appendChild(nameElement);
       }
 
-      const deleteButton = document.createElement("button");
-      deleteButton.textContent = "Delete";
-      deleteButton.onclick = function() {
-        deleteRecommendation(index);
-      };
-      element.appendChild(deleteButton);
+      if (isAdmin) {
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = function() {
+          deleteRecommendation(index);
+        };
+        element.appendChild(deleteButton);
+
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.onclick = function() {
+          editRecommendation(index);
+        };
+        element.appendChild(editButton);
+      }
 
       recommendationsContainer.appendChild(element);
     });
