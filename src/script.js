@@ -167,6 +167,25 @@ function loadRecommendations() {
   }
 }
 
+
+function editRecommendation(index) {
+  try {
+    const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
+    const recommendation = recommendations[index];
+
+    // Prompt the user to edit the recommendation
+    const newRecommendation = prompt("Edit your recommendation:", recommendation.recommendation);
+    if (newRecommendation !== null && newRecommendation.trim() !== "") {
+      recommendations[index].recommendation = newRecommendation.trim();
+      localStorage.setItem("recommendations", JSON.stringify(recommendations));
+      loadRecommendations(); // Reload recommendations to display the updated one
+    }
+  } catch (error) {
+    console.error("Error editing recommendation", error);
+  }
+}
+
+
 function deleteRecommendation(index) {
   try {
     let recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
