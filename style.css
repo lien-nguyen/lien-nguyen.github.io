@@ -111,6 +111,17 @@ nav.active .top-div {
   transition: transform 0.3s;
 }
 
+
+#about-me p {
+  font-size: 18px;
+  color: #666;
+}
+
+#about-me h1 {
+  font-size: 18px;
+  color: #666;
+}
+
 .profile_image:hover {
   transform: scale(1.05);
 }
@@ -290,6 +301,11 @@ button:hover {
 }
 .certification-item {
   margin-bottom: 5px;
+}
+
+
+.certification-item a {
+  text-decoration: none;
 }
 
 
