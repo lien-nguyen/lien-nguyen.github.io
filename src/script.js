@@ -23,6 +23,15 @@ document.addEventListener("DOMContentLoaded", function() {
   // if (urlParams.get('admin') === 'true') {
   //   document.getElementById('admin-login').style.display = 'block';
   // }
+
+  // Initialize language switcher
+  const languageSwitcher = document.getElementById('language-switcher');
+  languageSwitcher.addEventListener('change', (event) => {
+    setLanguage(event.target.value);
+  });
+
+  // Set default language
+  setLanguage('en');
 });
 
 function scrollToTop() {
@@ -167,7 +176,6 @@ function loadRecommendations() {
   }
 }
 
-
 function editRecommendation(index) {
   try {
     const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
@@ -185,7 +193,6 @@ function editRecommendation(index) {
   }
 }
 
-
 function deleteRecommendation(index) {
   try {
     let recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
@@ -197,69 +204,43 @@ function deleteRecommendation(index) {
   }
 }
 
-// Commented out pending recommendations functions
-/*
-function loadPendingRecommendations() {
-  try {
-    const pendingRecommendations = JSON.parse(localStorage.getItem("pendingRecommendations")) || [];
-    const pendingContainer = document.getElementById("pending_recommendations");
-    pendingRecommendations.forEach(function(rec, index) {
-      const element = document.createElement("div");
-      element.setAttribute("class", "recommendation");
-      element.innerHTML = "<span>&#8220;</span>" + rec.recommendation + "<span>&#8221;</span>";
-      
-      if (rec.name) {
-        const nameElement = document.createElement("p");
-        nameElement.textContent = "- " + rec.name;
-        element.appendChild(nameElement);
+// Function to set the language and load translations
+// EN: For now keep english tatic files as it is - TODO: remove static files and move en contents to en.json
+function setLanguage(lang) {
+  fetch(`/languages/${lang}.json`)
+    .then(response => response.json())
+    .then(translations => {
+      document.getElementById('aboutMe').innerText = translations.aboutMe;
+      document.getElementById('experiences').innerText = translations.experiences;
+      document.getElementById('skills').innerText = translations.skills;
+      document.getElementById('projects').innerText = translations.projects;
+      document.getElementById('education').innerText = translations.education;
+      document.getElementById('certifications').innerText = translations.certifications;
+      document.getElementById('contact').innerText = translations.contact;
+      document.getElementById('recommendations').innerText = translations.recommendations;
+      document.getElementById('leaveRecommendation').innerText = translations.leaveRecommendation;
+      document.getElementById('contactInformation').innerText = translations.contactInformation;
+      document.getElementById('recommend_btn').innerText = translations.submit;
+      document.getElementById('thanksForRecommendation').innerText = translations.thanksForRecommendation;
+
+      // Load content from static HTML files for English
+      if (lang === 'en') {
+        loadAboutMe();
+        loadEducation();
+        loadExperiences();
+        loadProjects();
+        loadSkills();
+        addTrainingAndCertsSection();
+      } else {
+        // Load content from JSON for other languages
+        document.getElementById('about-me-placeholder').innerHTML = translations.aboutMeContent;
+        document.getElementById('experiences-placeholder').innerHTML = translations.experiencesContent;
+        document.getElementById('skills-placeholder').innerHTML = translations.skillsContent;
+        document.getElementById('projects-placeholder').innerHTML = translations.projectsContent;
+        document.getElementById('education-placeholder').innerHTML = translations.educationContent;
+        document.getElementById('training-and-certs-placeholder').innerHTML = translations.certificationsContent;
+        document.getElementById('contact').innerHTML = translations.contactContent;
       }
-
-      const approveButton = document.createElement("button");
-      approveButton.textContent = "Approve";
-      approveButton.onclick = function() {
-        approveRecommendation(index);
-      };
-      element.appendChild(approveButton);
-
-      const deleteButton = document.createElement("button");
-      deleteButton.textContent = "Delete";
-      deleteButton.onclick = function() {
-        deletePendingRecommendation(index);
-      };
-      element.appendChild(deleteButton);
-
-      pendingContainer.appendChild(element);
-    });
-  } catch (error) {
-    console.error("Error loading pending recommendations from localStorage", error);
-  }
+    })
+    .catch(error => console.error('Error loading translations:', error));
 }
-
-function approveRecommendation(index) {
-  try {
-    const pendingRecommendations = JSON.parse(localStorage.getItem("pendingRecommendations")) || [];
-    const approvedRecommendation = pendingRecommendations.splice(index, 1)[0];
-    localStorage.setItem("pendingRecommendations", JSON.stringify(pendingRecommendations));
-
-    const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
-    recommendations.push(approvedRecommendation);
-    localStorage.setItem("recommendations", JSON.stringify(recommendations));
-
-    location.reload(); // Reload the page to update the recommendations
-  } catch (error) {
-    console.error("Error approving recommendation", error);
-  }
-}
-
-function deletePendingRecommendation(index) {
-  try {
-    const pendingRecommendations = JSON.parse(localStorage.getItem("pendingRecommendations")) || [];
-    pendingRecommendations.splice(index, 1);
-    localStorage.setItem("pendingRecommendations", JSON.stringify(pendingRecommendations));
-
-    location.reload(); // Reload the page to update the pending recommendations
-  } catch (error) {
-    console.error("Error deleting pending recommendation", error);
-  }
-}
-*/
