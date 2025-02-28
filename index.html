@@ -34,19 +34,19 @@
       </div>
     </div>
     <div class="top-div">
-      <a class="top-menu" href="#about-me">About Me</a>
-      <a class="top-menu" href="#experience">Experiences</a>
-      <a class="top-menu" href="#skill">Skills</a>
-      <a class="top-menu" href="#project">Projects</a>
-      <a class="top-menu" href="#education">Education</a>
-      <a class="top-menu" href="#training-and-certs-placeholder">Certifications</a>
-      <a class="top-menu" href="#recommendation">Contact</a>
+      <a class="top-menu" href="#about-me" id="aboutMe">About Me</a>
+      <a class="top-menu" href="#experience" id="experiences">Experiences</a>
+      <a class="top-menu" href="#skill" id="skills">Skills</a>
+      <a class="top-menu" href="#project" id="projects">Projects</a>
+      <a class="top-menu" href="#education" id="education">Education</a>
+      <a class="top-menu" href="#training-and-certs-placeholder" id="certifications">Certifications</a>
+      <a class="top-menu" href="#recommendation" id="contact">Contact</a>
     </div>
     <div class="language-switcher">
       <select id="language-switcher">
         <option value="en">English</option>
-        <option value="de">Deutsch</option>
-        <option value="de">Vietnamese</option>
+        <option value="de">German</option>
+        <option value="vi">Vietnamese</option>
       </select>
     </div>
   </nav>
@@ -63,7 +63,7 @@
 
   <!-- Recommendations -->
   <section id="recommendation">
-    <h2>Recommendations</h2>
+    <h2 id="recommendations">Recommendations</h2>
     <div class="all_recommendations" id="all_recommendations">
       <div class="recommendation">
         <span>&#8220;</span>
@@ -74,16 +74,9 @@
     </div>
   </section> 
 
-  <!-- Pending Recommendations for Approval 
-  <section id="pending-recommendations" >
-    <h2>Pending Recommendations</h2>
-    <div id="pending_recommendations"></div>
-  </section>
-  -->
-
   <!-- Leave a Recommendation -->
   <section id="contact-me">
-    <h2>Leave a Recommendation</h2>
+    <h2 id="leaveRecommendation">Leave a Recommendation</h2>
     <div class="contact-container">
       <div class="contact-form">
         <fieldset>
@@ -100,7 +93,7 @@
 
   <!-- Contact Information -->
   <section id="contact">
-    <h2>Contact</h2>
+    <h2 id="contactInformation">Contact</h2>
     <div class="contact-container">
       <div class="contact-info">
         <h3>Contact Information</h3>
@@ -113,7 +106,7 @@
 
   <div class="popup" id="popup">
     <img src="../img/checkmark.png" alt="Checkmark"/>
-    <h3>Thanks for leaving a recommendation</h3>
+    <h3 id="thanksForRecommendation">Thanks for leaving a recommendation</h3>
     <button onclick="showPopup(false)">Ok</button>
   </div>
 

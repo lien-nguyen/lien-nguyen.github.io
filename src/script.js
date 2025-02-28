@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
   loadRecommendations();
-  // loadPendingRecommendations(); // Commented out
   loadAboutMe();
   loadEducation();
   loadExperiences();
@@ -17,12 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
       scrollToTopBtn.style.display = "none";
     }
   });
-
-  // Check for admin query parameter to show admin login prompt
-  // const urlParams = new URLSearchParams(window.location.search);
-  // if (urlParams.get('admin') === 'true') {
-  //   document.getElementById('admin-login').style.display = 'block';
-  // }
 
   // Initialize language switcher
   const languageSwitcher = document.getElementById('language-switcher');
@@ -205,7 +198,6 @@ function deleteRecommendation(index) {
 }
 
 // Function to set the language and load translations
-// EN: For now keep english tatic files as it is - TODO: remove static files and move en contents to en.json
 function setLanguage(lang) {
   fetch(`/languages/${lang}.json`)
     .then(response => response.json())
@@ -233,7 +225,17 @@ function setLanguage(lang) {
         addTrainingAndCertsSection();
       } else {
         // Load content from JSON for other languages
-        document.getElementById('about-me-placeholder').innerHTML = translations.aboutMeContent;
+        document.getElementById('about-me-placeholder').innerHTML = `<section id="about-me">
+          <div class="container">
+            <div>
+              <img class="profile_image" src="../img/profile_pic.png" alt="Profile Picture"/>
+            </div>
+            <div>
+              <h1>${translations.aboutMe}</h1>
+              <p>${translations.aboutMeContent}</p>
+            </div>
+          </div>
+        </section>`;
         document.getElementById('experiences-placeholder').innerHTML = translations.experiencesContent;
         document.getElementById('skills-placeholder').innerHTML = translations.skillsContent;
         document.getElementById('projects-placeholder').innerHTML = translations.projectsContent;
