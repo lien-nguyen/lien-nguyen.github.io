@@ -4,8 +4,9 @@ FROM node:23-alpine
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
-COPY ./src/script.json ./
+COPY ./src/script.js ./
 
+# TODO: Copy the languages files
 #COPY ./languages/* ./
 
 # Install dependencies
