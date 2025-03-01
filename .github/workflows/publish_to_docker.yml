@@ -1,13 +1,16 @@
 # TODO - refine the publish to docker action
 
 name: Publish to Docker
+
 on:
   push:
     branches:
       - master
+
 permissions:
   packages: write
   contents: read
+  
 jobs:
   publish:
     runs-on: ubuntu-latest
