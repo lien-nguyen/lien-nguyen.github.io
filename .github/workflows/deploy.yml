@@ -1,3 +1,5 @@
+# Deploy the project to GitHub Pages
+
 name: Deploy to GitHub Pages
 
 on:
@@ -35,6 +37,7 @@ jobs:
           cp robots.txt deployment/
           cp sitemap.xml deployment/
           cp -r img deployment/
+          cp -r languages/* deployment/
           rm -f deployment/README.md
 
       - name: Deploy to GitHub Pages
