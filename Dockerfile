@@ -4,7 +4,7 @@ FROM node:23-alpine
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
-COPY ./src/script.js ./
+COPY package.json package-lock.json ./
 
 # TODO: Copy the languages files
 #COPY ./languages/* ./
@@ -16,9 +16,11 @@ RUN npm install
 COPY . .
 
 # Build the project
+#RUN chmod +x ./src/script.js
 RUN npm run build
 
-EXPOSE 8080
+# Expose the port the app runs on
+EXPOSE 3000
 
 # Command to run the application
-CMD ["npx", "http-server", "deployment", "-p", "8080"]
+CMD ["npm", "start", "deployment", "-p", "3000"]
