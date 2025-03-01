@@ -18,8 +18,7 @@ COPY . .
 # Build the project
 RUN npm run build
 
-# Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 8080
 
 # Command to run the application
-CMD ["npm", "start", "deployment", "-p", "3000"]
+CMD ["npx", "http-server", "deployment", "-p", "8080"]
