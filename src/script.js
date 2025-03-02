@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  // Temporary STOP function language switcher being available, and Reactivate once done with development
   // Initialize language switcher
   const languageSwitcher = document.getElementById('language-switcher');
   languageSwitcher.addEventListener('change', (event) => {
@@ -25,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Set default language
   setLanguage('en');
-});
+}); 
+
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });

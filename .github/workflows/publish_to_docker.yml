@@ -2,14 +2,15 @@
 
 name: Publish to Docker
 
-on:
+on: 
+  # commenting out to prevent the workflow from running automatically when changes are pushed to the master branch
   #workflow_run:
   #  workflows: ["Packaging"]
   #  types:
   #    - completed
-  push:
-    branches:
-      - master
+  #push:
+  #  branches:
+  #    - master
 
 permissions:
   packages: write
