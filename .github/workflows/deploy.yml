@@ -5,15 +5,16 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    #  - main
+      - feature/multilingual-support
+#  pull_request:
+#    branches:
+#      - main
 
 jobs:
   deploy:
     # Temporary stop triggering the workflow on push from feature branches
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/feature/multilingual-support'
     runs-on: ubuntu-latest
 
     steps:
