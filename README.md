@@ -61,3 +61,15 @@ cd lien-nguyen.github.io
 git add .
 git commit -m "Update portfolio content"
 git push
+```
+
+
+---
+
+## 🪪 Contact
+
+- GitHub: @lien-nguyen
+
+- LinkedIn: nguyen-thi-bich-lien
+
+- Email: thi.bich.l.nguyen@gmail.com
