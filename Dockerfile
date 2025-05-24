@@ -4,8 +4,8 @@ FROM node:23-alpine
 WORKDIR /usr/src/app
 
 # Remove or comment out these lines if package.json is not needed
-# COPY package.json ./
-# RUN npm install
+ COPY package.json ./
+ RUN npm install
 
 # Install 'serve' to serve static files
 RUN npm install -g serve
