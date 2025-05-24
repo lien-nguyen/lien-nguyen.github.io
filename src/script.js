@@ -34,7 +34,7 @@ function scrollToTop() {
 }
 
 function addTrainingAndCertsSection() {
-  fetch('../static/training-and-certs.html') // Ensure the correct relative path
+  fetch('static/training-and-certs.html') // Ensure the correct relative path
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
@@ -48,7 +48,7 @@ function addTrainingAndCertsSection() {
 }
 
 function loadAboutMe() {
-  fetch('../static/about-me.html')
+  fetch('static/about-me.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('about-me-placeholder').innerHTML = data;
@@ -57,7 +57,7 @@ function loadAboutMe() {
 }
 
 function loadEducation() {
-  fetch('../static/education.html')
+  fetch('static/education.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('education-placeholder').innerHTML = data;
@@ -66,7 +66,7 @@ function loadEducation() {
 }
 
 function loadExperiences() {
-  fetch('../static/experiences.html')
+  fetch('static/experiences.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('experiences-placeholder').innerHTML = data;
@@ -75,7 +75,7 @@ function loadExperiences() {
 }
 
 function loadProjects() {
-  fetch('../static/projects.html')
+  fetch('static/projects.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('projects-placeholder').innerHTML = data;
@@ -84,7 +84,7 @@ function loadProjects() {
 }
 
 function loadSkills() {
-  fetch('../static/skills.html')
+  fetch('static/skills.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('skills-placeholder').innerHTML = data;
