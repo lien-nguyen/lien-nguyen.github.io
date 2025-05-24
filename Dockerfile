@@ -10,11 +10,11 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Build the project
-#RUN chmod +x ./src/script.js
-#RUN npm run build
+RUN chmod +x ./src/script.js
+RUN npm run build
 
 # Expose the port the app runs on
-#EXPOSE 3000
+EXPOSE 3000
 
 # Command to run the application
-#CMD ["npm", "start", "deployment", "-p", "3000"]
+CMD ["npm", "start", "deployment", "-p", "3000"]
