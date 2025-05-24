@@ -68,8 +68,7 @@ git push
 
 ## 🪪 Contact
 
-- GitHub: @lien-nguyen
-
-- LinkedIn: nguyen-thi-bich-lien
-
+- GitHub: [@lien-nguyen](https://github.com/lien-nguyen)
+- LinkedIn: [nguyen-thi-bich-lien](https://www.linkedin.com/in/nguyen-thi-bich-lien)
+- Portfolio: [lien-nguyen.github.io](https://lien-nguyen.github.io/)
 - Email: thi.bich.l.nguyen@gmail.com
