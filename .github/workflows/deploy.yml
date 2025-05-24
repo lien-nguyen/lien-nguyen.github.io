@@ -6,14 +6,9 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   deploy:
-    # Temporary stop triggering the workflow on push from feature branches
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -34,15 +29,15 @@ jobs:
       - name: Copy files to deployment directory
         run: |
           mkdir -p deployment
-          cp -r static deployment/
+          cp -r static/* deployment/
           cp -r src deployment/
-          cp -r certs deployment/
+          cp -r certs/* deployment/
           cp style.css deployment/
           cp index.html deployment/
           cp robots.txt deployment/
           cp sitemap.xml deployment/
           cp -r img deployment/
-          cp -r languages deployment/
+          cp -r languages/* deployment/
           rm -f deployment/README.md
 
       - name: Deploy to GitHub Pages
