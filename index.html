@@ -13,7 +13,7 @@
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <title>Lien Nguyen - Portfolio</title>
     <link rel="stylesheet" href="./style.css"/>
-    <script src="/src/script.js" defer></script>
+    <script src="src/script.js" defer></script>
   </head>
 <body>
   <!-- Navigation Bar -->
@@ -21,10 +21,10 @@
     <div id="home">
       <div class="contact_info">
         <a href="https://www.linkedin.com/in/nguyen-thi-bich-lien/" target="_blank">
-          <img src="../img/linkedinIcon.png" alt="LinkedIn Profile">
+          <img src="img/linkedinIcon.png" alt="LinkedIn Profile">
         </a>
         <a href="https://github.com/lien-nguyen" target="_blank">
-          <img src="../img/github.png" alt="Github Profile">
+          <img src="img/github.png" alt="Github Profile">
         </a>
       </div>
       <div class="hamburger" onclick="toggleMenu()">
@@ -54,12 +54,12 @@
   <!-- Hidden admin link -->
   <a href="?admin=true" style="display:none;" id="admin-link">Admin Access</a>
 
-  <div id="about-me"></div>
-  <div id="experience"></div>
-  <div id="skill"></div>
-  <div id="project"></div>
-  <div id="education"></div>
-  <div id="training-and-certs"></div>
+  <div id="about-me-placeholder"></div>
+  <div id="experiences-placeholder"></div>
+  <div id="skills-placeholder"></div>
+  <div id="projects-placeholder"></div>
+  <div id="education-placeholder"></div>
+  <div id="training-and-certs-placeholder"></div>
 
   <!-- Recommendations -->
   <section id="recommendation">
@@ -105,7 +105,7 @@
   </section>
 
   <div class="popup" id="popup">
-    <img src="../img/checkmark.png" alt="Checkmark"/>
+    <img src="img/checkmark.png" alt="Checkmark"/>
     <h3 id="thanksForRecommendation">Thanks for leaving a recommendation</h3>
     <button onclick="showPopup(false)">Ok</button>
   </div>
