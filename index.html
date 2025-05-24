@@ -45,8 +45,8 @@
     <div class="language-switcher">
       <select id="language-switcher">
         <option value="en">English</option>
-        <option value="de">German</option> 
-        <option value="vi">Vietnamese</option> 
+        <option value="de">German</option>
+        <option value="vi">Vietnamese</option>
       </select>
     </div>
   </nav>
@@ -54,12 +54,12 @@
   <!-- Hidden admin link -->
   <a href="?admin=true" style="display:none;" id="admin-link">Admin Access</a>
 
-  <div id="about-me-placeholder"></div>
-  <div id="experiences-placeholder"></div>
-  <div id="skills-placeholder"></div>
-  <div id="projects-placeholder"></div>
-  <div id="education-placeholder"></div>
-  <div id="training-and-certs-placeholder"></div>
+  <div id="about-me"></div>
+  <div id="experience"></div>
+  <div id="skill"></div>
+  <div id="project"></div>
+  <div id="education"></div>
+  <div id="training-and-certs"></div>
 
   <!-- Recommendations -->
   <section id="recommendation">
@@ -127,6 +127,67 @@
     function toggleMenu() {
       document.querySelector('nav').classList.toggle('active');
     }
+
+    const translations = {
+      en: {
+        aboutMe: "About Me",
+        experiences: "Experiences",
+        skills: "Skills",
+        projects: "Projects",
+        education: "Education",
+        certifications: "Certifications",
+        contact: "Contact",
+        recommendations: "Recommendations",
+        leaveRecommendation: "Leave a Recommendation",
+        yourRecommendation: "Your Recommendation",
+        thanksForRecommendation: "Thanks for leaving a recommendation",
+        contactInformation: "Contact Information"
+      },
+      de: {
+        aboutMe: "Über mich",
+        experiences: "Erfahrungen",
+        skills: "Fähigkeiten",
+        projects: "Projekte",
+        education: "Bildung",
+        certifications: "Zertifizierungen",
+        contact: "Kontakt",
+        recommendations: "Empfehlungen",
+        leaveRecommendation: "Eine Empfehlung hinterlassen",
+        yourRecommendation: "Ihre Empfehlung",
+        thanksForRecommendation: "Danke für Ihre Empfehlung",
+        contactInformation: "Kontaktinformation"
+      },
+      vi: {
+        aboutMe: "Về tôi",
+        experiences: "Kinh nghiệm",
+        skills: "Kỹ năng",
+        projects: "Dự án",
+        education: "Giáo dục",
+        certifications: "Chứng chỉ",
+        contact: "Liên hệ",
+        recommendations: "Lời khuyên",
+        leaveRecommendation: "Để lại lời khuyên",
+        yourRecommendation: "Lời khuyên của bạn",
+        thanksForRecommendation: "Cảm ơn bạn đã để lại lời khuyên",
+        contactInformation: "Thông tin liên hệ"
+      }
+    };
+
+    document.getElementById('language-switcher').addEventListener('change', function() {
+      const selectedLanguage = this.value;
+      document.getElementById('aboutMe').textContent = translations[selectedLanguage].aboutMe;
+      document.getElementById('experiences').textContent = translations[selectedLanguage].experiences;
+      document.getElementById('skills').textContent = translations[selectedLanguage].skills;
+      document.getElementById('projects').textContent = translations[selectedLanguage].projects;
+      document.getElementById('education').textContent = translations[selectedLanguage].education;
+      document.getElementById('certifications').textContent = translations[selectedLanguage].certifications;
+      document.getElementById('contact').textContent = translations[selectedLanguage].contact;
+      document.getElementById('recommendations').textContent = translations[selectedLanguage].recommendations;
+      document.getElementById('leaveRecommendation').textContent = translations[selectedLanguage].leaveRecommendation;
+      document.querySelector('.introduction').textContent = translations[selectedLanguage].yourRecommendation;
+      document.getElementById('thanksForRecommendation').textContent = translations[selectedLanguage].thanksForRecommendation;
+      document.getElementById('contactInformation').textContent = translations[selectedLanguage].contactInformation;
+    });
   </script>
 </body>
 </html>
