@@ -3,18 +3,26 @@ FROM node:23-alpine
 # Set the working directory
 WORKDIR /usr/src/app
 
-# TODO: Copy the languages files
-#COPY ./languages/* ./
+# Copy package.json and package-lock.json first
+COPY package*.json ./
 
-# Copy the rest of the application files
+# Install dependencies
+RUN npm install
+
+# Install 'serve' to serve static files
+RUN npm install -g serve
+
+# Copy the rest of the application code
 COPY . .
 
-# Build the project
+# Make script executable (if needed)
 RUN chmod +x ./src/script.js
+
+# Build the project
 RUN npm run build
 
 # Expose the port the app runs on
 EXPOSE 3000
 
 # Command to run the application
-CMD ["npm", "start", "deployment", "-p", "3000"]
+CMD ["serve", "-s", "deployment", "-l", "3000"]
