@@ -3,11 +3,9 @@ FROM node:23-alpine
 # Set the working directory
 WORKDIR /usr/src/app
 
-# Copy package.json only (if you don't have package-lock.json)
-COPY package.json ./
-
-# Install dependencies
-RUN npm install
+# Remove or comment out these lines if package.json is not needed
+# COPY package.json ./
+# RUN npm install
 
 # Install 'serve' to serve static files
 RUN npm install -g serve
