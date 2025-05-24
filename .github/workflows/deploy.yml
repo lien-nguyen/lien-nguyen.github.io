@@ -13,8 +13,7 @@ on:
 
 jobs:
   deploy:
-    # Temporary stop triggering the workflow on push from feature branches
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Remove or adjust the 'if' condition to allow deploys from other branches
     runs-on: ubuntu-latest
 
     steps:
