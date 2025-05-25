@@ -33,7 +33,6 @@ jobs:
           cp sitemap.xml deployment/
           cp -r img deployment/
           cp -r languages deployment/
-          cp -f deployment/README.md
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
