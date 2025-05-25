@@ -7,9 +7,6 @@ on:
     workflows: ["Packaging"]
     types:
       - completed
-  push:
-    branches:
-      - master 
 
 permissions:
   packages: write
