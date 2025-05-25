@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="Lien Nguyen's professional portfolio showcasing skills, experiences, and projects.">
+    <meta name="keywords" content="Lien Nguyen, Nguyen, portfolio, skills, experiences, projects, web development">
+    <meta name="author" content="Lien Nguyen">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://trusted.cdn.com; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self';">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <title>Lien Nguyen - Portfolio</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="src/script.js" defer></script>
+  </head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div id="home">
+      <div class="contact_info">
+        <a href="https://www.linkedin.com/in/nguyen-thi-bich-lien/" target="_blank">
+          <img src="img/linkedinIcon.png" alt="LinkedIn Profile">
+        </a>
+        <a href="https://github.com/lien-nguyen" target="_blank">
+          <img src="img/github.png" alt="Github Profile">
+        </a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="top-div">
+      <a class="top-menu" href="#about-me" id="aboutMe">About Me</a>
+      <a class="top-menu" href="#experience" id="experiences">Experiences</a>
+      <a class="top-menu" href="#skill" id="skills">Skills</a>
+      <a class="top-menu" href="#project" id="projects">Projects</a>
+      <a class="top-menu" href="#education" id="education">Education</a>
+      <a class="top-menu" href="#training-and-certs-placeholder" id="certifications">Certifications</a>
+      <a class="top-menu" href="#recommendation" id="contact">Contact</a>
+    </div>
+    <div class="language-switcher">
+      <select id="language-switcher">
+        <option value="en">English</option>
+        <option value="de">German</option>
+        <option value="vi">Vietnamese</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- Hidden admin link -->
+  <a href="?admin=true" style="display:none;" id="admin-link">Admin Access</a>
+
+  <div id="about-me-placeholder"></div>
+  <div id="experiences-placeholder"></div>
+  <div id="skills-placeholder"></div>
+  <div id="projects-placeholder"></div>
+  <div id="education-placeholder"></div>
+  <div id="training-and-certs-placeholder"></div>
+
+  <!-- Recommendations -->
+  <section id="recommendation">
+    <h2 id="recommendations">Recommendations</h2>
+    <div class="all_recommendations" id="all_recommendations">
+      <div class="recommendation">
+        <span>&#8220;</span>
+        Lien is a very curious person who is always looking for new ideas and experimenting new things which makes 
+        her one of the most creative persons I've ever worked with. 
+        <span>&#8221;</span>
+      </div>
+    </div>
+  </section> 
+
+  <!-- Leave a Recommendation -->
+  <section id="contact-me">
+    <h2 id="leaveRecommendation">Leave a Recommendation</h2>
+    <div class="contact-container">
+      <div class="contact-form">
+        <fieldset>
+          <legend class="introduction">Your Recommendation</legend>          
+          <input type="text" id="name" placeholder="Name (Optional)"> <br/>
+          <textarea id="new_recommendation" cols="100" rows="5" placeholder="Message"></textarea>
+          <div class="flex_center">
+            <button id="recommend_btn" onclick="addRecommendation()">Submit</button>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Information -->
+  <section id="contact">
+    <h2 id="contactInformation">Contact</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>Email: thi.bich.l.nguyen@gmail.com</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/nguyen-thi-bich-lien/">linkedin.com/in/nguyen-thi-bich-lien</a></p>
+        <p>GitHub: <a href="https://github.com/lien-nguyen">github.com/lien-nguyen</a></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="popup" id="popup">
+    <img src="img/checkmark.png" alt="Checkmark"/>
+    <h3 id="thanksForRecommendation">Thanks for leaving a recommendation</h3>
+    <button onclick="showPopup(false)">Ok</button>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button onclick="scrollToTop()" id="scrollToTopBtn" class="iconbutton">Top</button>
+
+  <footer>
+    <hr>
+    <div class="flex_center">
+      Copyright &#169; 
+      <script type="text/javascript">
+        document.write(new Date().getFullYear());
+      </script> - Thi Bich Lien Nguyen
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('nav').classList.toggle('active');
+    }
+
+    const translations = {
+      en: {
+        aboutMe: "About Me",
+        experiences: "Experiences",
+        skills: "Skills",
+        projects: "Projects",
+        education: "Education",
+        certifications: "Certifications",
+        contact: "Contact",
+        recommendations: "Recommendations",
+        leaveRecommendation: "Leave a Recommendation",
+        yourRecommendation: "Your Recommendation",
+        thanksForRecommendation: "Thanks for leaving a recommendation",
+        contactInformation: "Contact Information"
+      },
+      de: {
+        aboutMe: "Über mich",
+        experiences: "Erfahrungen",
+        skills: "Fähigkeiten",
+        projects: "Projekte",
+        education: "Bildung",
+        certifications: "Zertifizierungen",
+        contact: "Kontakt",
+        recommendations: "Empfehlungen",
+        leaveRecommendation: "Eine Empfehlung hinterlassen",
+        yourRecommendation: "Ihre Empfehlung",
+        thanksForRecommendation: "Danke für Ihre Empfehlung",
+        contactInformation: "Kontaktinformation"
+      },
+      vi: {
+        aboutMe: "Về tôi",
+        experiences: "Kinh nghiệm",
+        skills: "Kỹ năng",
+        projects: "Dự án",
+        education: "Giáo dục",
+        certifications: "Chứng chỉ",
+        contact: "Liên hệ",
+        recommendations: "Lời khuyên",
+        leaveRecommendation: "Để lại lời khuyên",
+        yourRecommendation: "Lời khuyên của bạn",
+        thanksForRecommendation: "Cảm ơn bạn đã để lại lời khuyên",
+        contactInformation: "Thông tin liên hệ"
+      }
+    };
+
+    document.getElementById('language-switcher').addEventListener('change', function() {
+      const selectedLanguage = this.value;
+      document.getElementById('aboutMe').textContent = translations[selectedLanguage].aboutMe;
+      document.getElementById('experiences').textContent = translations[selectedLanguage].experiences;
+      document.getElementById('skills').textContent = translations[selectedLanguage].skills;
+      document.getElementById('projects').textContent = translations[selectedLanguage].projects;
+      document.getElementById('education').textContent = translations[selectedLanguage].education;
+      document.getElementById('certifications').textContent = translations[selectedLanguage].certifications;
+      document.getElementById('contact').textContent = translations[selectedLanguage].contact;
+      document.getElementById('recommendations').textContent = translations[selectedLanguage].recommendations;
+      document.getElementById('leaveRecommendation').textContent = translations[selectedLanguage].leaveRecommendation;
+      document.querySelector('.introduction').textContent = translations[selectedLanguage].yourRecommendation;
+      document.getElementById('thanksForRecommendation').textContent = translations[selectedLanguage].thanksForRecommendation;
+      document.getElementById('contactInformation').textContent = translations[selectedLanguage].contactInformation;
+    });
+  </script>
+</body>
+</html>
