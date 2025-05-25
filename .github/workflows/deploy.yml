@@ -20,12 +20,6 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build the project
-        run: npm run build
-
       - name: Copy files to deployment directory
         run: |
           mkdir -p deployment
