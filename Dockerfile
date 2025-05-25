@@ -9,9 +9,6 @@ RUN npm install -g serve
 # Copy the rest of the application code
 COPY . .
 
-# Make script executable (if needed)
-RUN chmod +x ./src/script.js
-
 # Expose the port the app runs on
 EXPOSE 3000
 
