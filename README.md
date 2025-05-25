@@ -45,27 +45,6 @@ This is the source code for my personal web portfolio hosted at [lien-nguyen.git
 
 ---
 
-## 📦 How to Use
-
-To edit and deploy your own portfolio based on this template:
-
-```bash
-# Clone the repository
-git clone https://github.com/lien-nguyen/lien-nguyen.github.io.git
-
-# Navigate into the folder
-cd lien-nguyen.github.io
-
-# Make changes to HTML/CSS/JS files
-# Commit and push to deploy
-git add .
-git commit -m "Update portfolio content"
-git push
-```
-
-
----
-
 ## 🪪 Contact
 
 - GitHub: [@lien-nguyen](https://github.com/lien-nguyen)
