@@ -23,6 +23,7 @@ jobs:
 
       - name: Copy files to deployment directory
         run: |
+          set -e
           mkdir -p deployment
           cp -r static deployment/
           cp -r src deployment/
@@ -34,6 +35,8 @@ jobs:
           cp -r img deployment/
           cp -r languages deployment/
           cp README.md deployment/
+          echo "Deployment directory contents:"
+          ls -l deployment/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
